@@ -196,7 +196,7 @@ int main()
 
 	int sec = hourToSec + minToSec + secToSec;
 	int price = sec * tarif;
-
+	
 	cout << "Price = " << price << "\n";
 
 	return 0;
