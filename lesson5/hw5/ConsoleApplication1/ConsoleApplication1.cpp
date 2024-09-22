@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <clocale>
 using namespace std;
 
 
