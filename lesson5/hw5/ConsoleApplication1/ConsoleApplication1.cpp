@@ -2,11 +2,13 @@
 #include <ctime>
 using namespace std;
 
+
 int main()
 {
+    setlocale(LC_ALL, "");
 	// task 1
 	// Ввести массив из 5 чисел, а затем вывести его в обратном порядке.
-    setlocale(0, "");
+
     const int size = 5;
     int numbers[size];
 
