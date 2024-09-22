@@ -1,12 +1,9 @@
 #include <iostream>
 #include <ctime>
-#include <clocale>
 using namespace std;
-
 
 int main()
 {
-    setlocale(LC_ALL, "");
 	// task 1
 	// Ввести массив из 5 чисел, а затем вывести его в обратном порядке.
 
