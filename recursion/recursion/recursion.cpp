@@ -1,46 +1,12 @@
 #include <iostream>
 using namespace std;
 
-void rec_func(int num) {
-    if (num > 0) {
-        rec_func(num - 1);
-        cout << num << " ";
-    }
-}
-
-void print_func_a(int num_a, int num_b) {
-    if (num_b >= num_a) {
-        print_func_a(num_a, num_b - 1);
-        cout << num_b << " ";
-    }
-}
-
-void print_func_b(int num_a, int num_b) {
-    if (num_a >= num_b) {
-        cout << num_a << " ";
-        print_func_b(num_a - 1, num_b);
-    }
-}
-
-void print_number_task3(int number) {
-    if (number > 0) {
-        cout << number % 10 << " ";
-        print_number_task3(number / 10);
-    }
-}
-
-void print_number_task4(int number) {
-    if (number > 0) {
-        print_number_task4(number / 10);
-        cout << number % 10<< " ";
-    }
-}
-
-int number_to_pow(int num, int pow) {
-    if (pow > 0) {
-        return number_to_pow(num, pow - 1) * num;
-    }
-}
+void rec_func(int num);
+void print_func_a(int num_a, int num_b);
+void print_func_b(int num_a, int num_b);
+void print_number_task3(int number);
+void print_number_task4(int number);
+int number_to_pow(int num, int pow);
 
 int main()
 {
@@ -113,6 +79,45 @@ int main()
     return 0;
 }
 
+void rec_func(int num) {
+    if (num > 0) {
+        rec_func(num - 1);
+        cout << num << " ";
+    }
+}
 
+void print_func_a(int num_a, int num_b) {
+    if (num_b >= num_a) {
+        print_func_a(num_a, num_b - 1);
+        cout << num_b << " ";
+    }
+}
+
+void print_func_b(int num_a, int num_b) {
+    if (num_a >= num_b) {
+        cout << num_a << " ";
+        print_func_b(num_a - 1, num_b);
+    }
+}
+
+void print_number_task3(int number) {
+    if (number > 0) {
+        cout << number % 10 << " ";
+        print_number_task3(number / 10);
+    }
+}
+
+void print_number_task4(int number) {
+    if (number > 0) {
+        print_number_task4(number / 10);
+        cout << number % 10 << " ";
+    }
+}
+
+int number_to_pow(int num, int pow) {
+    if (pow > 0) {
+        return number_to_pow(num, pow - 1) * num;
+    }
+}
 
 
