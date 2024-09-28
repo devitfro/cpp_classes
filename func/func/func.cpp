@@ -16,15 +16,13 @@ void InitProgram();
 int main()
 {
     InitProgram();
+
     // task 1
-  /*  Написать функцию Line, которую можно будет вызвать так :
-    Line(20, '@', 12, true); и при этом горизонтальная нарисуется линия, состоящая из 20 «собачек» красного цвета.Если передать в последнем параметре false – линия станет вертикальной.*/
     Line(20, '@', 31, true);
     cout << endl;
     Line(20, '@', 32, false);
 
     // task 2
-    // Написать функцию SetCursor, которая устанавливает координаты и цвет текста.Функция принимает три аргумента : координата по X, координата по Y, номер цвета.
     int x, y, color;
     cout << "Enter x -> " << " ";
     cin >> x;
@@ -36,7 +34,6 @@ int main()
     SetCursor(x, y, color);
 
     // task 3
-    // Написать функцию, определяющую среднее арифметическое элементов передаваемого ей массива.
     const int size = 10;
     int arrNumbers[size];
     CreateRanomArray(arrNumbers, size);
@@ -44,7 +41,6 @@ int main()
     FindAverageNumber(arrNumbers, size);
 
     // task 4
-    //Написать функцию, показывающую на экран минимум и максимум(значение и индекс) среди элементов передаваемого ей массива.
     const int size = 10;
     int arrNumbers[size];
     CreateRanomArray(arrNumbers, size);
@@ -53,7 +49,6 @@ int main()
     FindMaxNumberOfArray(arrNumbers, size);
 
     // task 5
-    // Написать функцию, которая получает в качестве параметров 2 целых числа и возвращает сумму чисел из диапазона между ними.
     int num1, num2;
     cout << "Enter number 1 -> " << " ";
     cin >> num1;
@@ -65,6 +60,7 @@ int main()
 
     return 0; 
 }
+
 void InitProgram() {
     srand(time(0));
     rand();
@@ -87,22 +83,28 @@ void SumBetweenNumbers(int num1, int num2) {
 
 void FindMinNumberOfArray(int arr[], int size) {
     int min = arr[0];
+    int ind = 0;
     for (int i = 0; i < size; i++) {
         if (arr[i] < min) {
             min = arr[i];
+            ind = i;
         }
     }
     cout << "Min number = " << min << endl;
+    cout << "Index = " << ind << endl;
 }
 
 void FindMaxNumberOfArray(int arr[], int size) {
     int max = arr[0];
+    int ind = 0;
     for (int i = 0; i < size; i++) {
         if (arr[i] > max) {
             max = arr[i];
+            ind = i;
         }
     }
     cout << "Min number = " << max << endl;
+    cout << "Index = " << ind << endl;
 }
 
 void CreateRanomArray(int arr[], int size) {
