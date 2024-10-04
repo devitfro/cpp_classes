@@ -35,10 +35,8 @@ int main()
 
 
     //Task 
-
-    int width = 10;  // ширина двумерного массива
+    int width, height;
     cin >> width;
-    int height = 4;  // высота двумерного массива
     cin >> height;
 
     // динамический одномерный массив указателей
