@@ -33,6 +33,32 @@ int main()
 
     free_memory(arr);
 
+
+    //Task 
+
+    int width = 10;  // ширина двумерного массива
+    cin >> width;
+    int height = 4;  // высота двумерного массива
+    cin >> height;
+
+    // динамический одномерный массив указателей
+    int** ar = new int* [height];
+
+    for (int y = 0; y < height; y++) {
+        ar[y] = new int[width];  // выделение памяти для каждой строки
+        for (int x = 0; x < width; x++) {
+            ar[y][x] = 10;
+            cout << ar[y][x] << "  ";
+        }
+        cout << "\n\n";
+    }
+
+    // Очистка памяти
+    for (int y = 0; y < height; y++) {
+        delete[] ar[y];
+    }
+    delete[] ar;
+
     return 0;
 }
 
