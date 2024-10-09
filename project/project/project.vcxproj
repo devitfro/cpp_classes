@@ -129,7 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="src.cpp" />
   </ItemGroup>
   <ItemGroup>
