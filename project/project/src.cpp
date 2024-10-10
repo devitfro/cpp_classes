@@ -1,17 +1,17 @@
 #include "header.h"
 
-// Сравнить карточки
+// РЎСЂР°РІРЅРёС‚СЊ РєР°СЂС‚РѕС‡РєРё
 bool compareCards(int firstCardIndex[2], int secondCardIndex[2]) {
     int firstRow = firstCardIndex[0];
     int firstCol = firstCardIndex[1];
     int secondRow = secondCardIndex[0];
     int secondCol = secondCardIndex[1];
 
-    // Сравниваем переводы карточек
+    // РЎСЂР°РІРЅРёРІР°РµРј РїРµСЂРµРІРѕРґС‹ РєР°СЂС‚РѕС‡РµРє
     return cards[firstRow][firstCol].text == cards[secondRow][secondCol].translation;
 }
 
-// Начало игры, первый уровень
+// РќР°С‡Р°Р»Рѕ РёРіСЂС‹, РїРµСЂРІС‹Р№ СѓСЂРѕРІРµРЅСЊ
 void startGame(int timer) {
     consoleSetting();
 
@@ -22,8 +22,8 @@ void startGame(int timer) {
     drawSideBar(30, 1, 30, 20, 0, 14);
     changePoints(0, 14, 0, 0, 60);
 
-    int startX = 62; // Начальная координата X для карточек
-    int startY = 5;  // Начальная координата Y для карточек
+    int startX = 62; // РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° X РґР»СЏ РєР°СЂС‚РѕС‡РµРє
+    int startY = 5;  // РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° Y РґР»СЏ РєР°СЂС‚РѕС‡РµРє
 
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLUMNS; c++) {
@@ -39,17 +39,17 @@ void startGame(int timer) {
     int textColor = 13;
     int bgColor = 14;
 
-    // Таймер
+    // РўР°Р№РјРµСЂ
     int timerDuration = timer;
     auto startTime = chrono::steady_clock::now();
 
     while (true) {
-        // Вычисляем оставшееся время
+        // Р’С‹С‡РёСЃР»СЏРµРј РѕСЃС‚Р°РІС€РµРµСЃСЏ РІСЂРµРјСЏ
         auto currentTime = chrono::steady_clock::now();
         int elapsedTime = chrono::duration_cast<chrono::seconds>(currentTime - startTime).count();
         int remainingTime = timerDuration - elapsedTime;
 
-        // Обновляем таймер на экране
+        // РћР±РЅРѕРІР»СЏРµРј С‚Р°Р№РјРµСЂ РЅР° СЌРєСЂР°РЅРµ
         if (isGame) {
             drawTimer(textColor, bgColor, remainingTime);
         }
@@ -59,31 +59,31 @@ void startGame(int timer) {
             isGame = false;
         }
 
-        // Проверяем, является ли введенный символ цифрой от 1 до 10
-        if (_kbhit()) { // Проверяем, нажата ли клавиша
+        // РџСЂРѕРІРµСЂСЏРµРј, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РІРІРµРґРµРЅРЅС‹Р№ СЃРёРјРІРѕР» С†РёС„СЂРѕР№ РѕС‚ 1 РґРѕ 10
+        if (_kbhit()) { // РџСЂРѕРІРµСЂСЏРµРј, РЅР°Р¶Р°С‚Р° Р»Рё РєР»Р°РІРёС€Р°
             int userChoice = _getch();
 
             if (userChoice >= 48 && userChoice <= 58) {
                 int index;
 
-                // Обрабатываем кнопку '0' как карточку 10
+                // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РєРЅРѕРїРєСѓ '0' РєР°Рє РєР°СЂС‚РѕС‡РєСѓ 10
                 if (userChoice == 48) {
-                    index = (ROWS * COLUMNS) - 1; // Индекс последней карточки  
+                    index = (ROWS * COLUMNS) - 1; // РРЅРґРµРєСЃ РїРѕСЃР»РµРґРЅРµР№ РєР°СЂС‚РѕС‡РєРё  
                 }
                 else {
-                    index = (char)userChoice - '1'; // Преобразуем символ в индекс
+                    index = (char)userChoice - '1'; // РџСЂРµРѕР±СЂР°Р·СѓРµРј СЃРёРјРІРѕР» РІ РёРЅРґРµРєСЃ
                 }
 
-                // Определяем строку и столбец на основе индекса
+                // РћРїСЂРµРґРµР»СЏРµРј СЃС‚СЂРѕРєСѓ Рё СЃС‚РѕР»Р±РµС† РЅР° РѕСЃРЅРѕРІРµ РёРЅРґРµРєСЃР°
                 int r = index / COLUMNS;
                 int c = index % COLUMNS;
 
-                // Переключаем состояние карточки
+                // РџРµСЂРµРєР»СЋС‡Р°РµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РєР°СЂС‚РѕС‡РєРё
                 if (choiseCount < 2) {
                     cards[r][c].isActive = !cards[r][c].isActive;
 
                     if (cards[r][c].isActive) {
-                        arrChooseCards[choiseCount][0] = r; // Сохраняем индекс первой карточки
+                        arrChooseCards[choiseCount][0] = r; // РЎРѕС…СЂР°РЅСЏРµРј РёРЅРґРµРєСЃ РїРµСЂРІРѕР№ РєР°СЂС‚РѕС‡РєРё
                         arrChooseCards[choiseCount][1] = c;
                         choiseCount++;
                     }
@@ -91,18 +91,18 @@ void startGame(int timer) {
                         choiseCount--;
                     }
 
-                    // Перерисовываем карточки
+                    // РџРµСЂРµСЂРёСЃРѕРІС‹РІР°РµРј РєР°СЂС‚РѕС‡РєРё
                     for (int r = 0; r < ROWS; r++) {
                         for (int c = 0; c < COLUMNS; c++) {
                             drawCard(startX + c * (WIDTH_CARD + 2), startY + r * (HEIGHT_CARD + 1), HEIGHT_CARD, WIDTH_CARD, 15, cards[r][c].text, cards[r][c].isActive, cards[r][c].isChoosed);
                         }
                     }
 
-                    // Проверяем, достигли ли мы двух выборов
+                    // РџСЂРѕРІРµСЂСЏРµРј, РґРѕСЃС‚РёРіР»Рё Р»Рё РјС‹ РґРІСѓС… РІС‹Р±РѕСЂРѕРІ
                     if (choiseCount == 2) {
                         attempts++;
 
-                        // Сравниваем карточки
+                        // РЎСЂР°РІРЅРёРІР°РµРј РєР°СЂС‚РѕС‡РєРё
                         if (compareCards(arrChooseCards[0], arrChooseCards[1])) {
                             cards[arrChooseCards[0][0]][arrChooseCards[0][1]].isChoosed = true;
                             cards[arrChooseCards[1][0]][arrChooseCards[1][1]].isChoosed = true;
@@ -110,20 +110,20 @@ void startGame(int timer) {
                             points++;
                         }
                         else {
-                            // Закрываем карточки
+                            // Р—Р°РєСЂС‹РІР°РµРј РєР°СЂС‚РѕС‡РєРё
                             cards[arrChooseCards[0][0]][arrChooseCards[0][1]].isActive = false;
                             cards[arrChooseCards[1][0]][arrChooseCards[1][1]].isActive = false;
 
                         }
-                        // Сбрасываем счётчик
+                        // РЎР±СЂР°СЃС‹РІР°РµРј СЃС‡С‘С‚С‡РёРє
                         choiseCount = 0;
                         changePoints(0, 14, attempts, points, remainingTime);
                     }
                 }
             }
 
-            // Нажатие клавиши Esc - выход из программы
-            if (userChoice == 27) { // 27 - код клавиши Esc
+            // РќР°Р¶Р°С‚РёРµ РєР»Р°РІРёС€Рё Esc - РІС‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹
+            if (userChoice == 27) { // 27 - РєРѕРґ РєР»Р°РІРёС€Рё Esc
                 break;
             }
         }
@@ -133,23 +133,23 @@ void startGame(int timer) {
     SetConsoleCursorPosition(output, pos);
 }
 
-// Карточка
+// РљР°СЂС‚РѕС‡РєР°
 void drawCard(int x, int y, int height, int width, int textColor, const wstring& content, bool isActive, bool isChoose) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    // Содержимое карточки будет выводиться с отступом в 1 символ
-    int contentWidth = width - 2; // Учитываем границы
+    // РЎРѕРґРµСЂР¶РёРјРѕРµ РєР°СЂС‚РѕС‡РєРё Р±СѓРґРµС‚ РІС‹РІРѕРґРёС‚СЊСЃСЏ СЃ РѕС‚СЃС‚СѓРїРѕРј РІ 1 СЃРёРјРІРѕР»
+    int contentWidth = width - 2; // РЈС‡РёС‚С‹РІР°РµРј РіСЂР°РЅРёС†С‹
     wstring truncatedContent = content;
     wchar_t withoutText[5] = L"card";
 
-    // Обрезаем содержимое, если оно слишком длинное
+    // РћР±СЂРµР·Р°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ, РµСЃР»Рё РѕРЅРѕ СЃР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ
     if (content.length() > contentWidth) {
         truncatedContent = content.substr(0, contentWidth);
     }
 
-    // Вычисляем центральные позиции
-    int contentStartX = x + (width - 2 - truncatedContent.length()) / 2 + 1; // Центр по оси X
-    int contentStartY = y + (height - 1) / 2; // Центр по оси Y
+    // Р’С‹С‡РёСЃР»СЏРµРј С†РµРЅС‚СЂР°Р»СЊРЅС‹Рµ РїРѕР·РёС†РёРё
+    int contentStartX = x + (width - 2 - truncatedContent.length()) / 2 + 1; // Р¦РµРЅС‚СЂ РїРѕ РѕСЃРё X
+    int contentStartY = y + (height - 1) / 2; // Р¦РµРЅС‚СЂ РїРѕ РѕСЃРё Y
 
     wchar_t isActSymb[3] = L"\u2261";
     wchar_t isNotActSymb[3] = L"\u2550";
@@ -162,7 +162,7 @@ void drawCard(int x, int y, int height, int width, int textColor, const wstring&
     int textColorChoose = 0;
     int backgroundColorChoose = 14;
 
-    // Рисуем карточку
+    // Р РёСЃСѓРµРј РєР°СЂС‚РѕС‡РєСѓ
     if (isChoose) {
         drawRectangle(x, y, height, width, textColorChoose, backgroundColorChoose, isActSymb);
         setColor(textColorChoose, backgroundColorChoose);
@@ -185,10 +185,10 @@ void drawCard(int x, int y, int height, int width, int textColor, const wstring&
         wcout << withoutText;
     }
 
-    setColor(7, 0); // Сброс цвета
+    setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
 }
 
-// Изменить состояние очков, вызов функции drawWin() если points == 5,вызов функции playNextLevel(15);
+// РР·РјРµРЅРёС‚СЊ СЃРѕСЃС‚РѕСЏРЅРёРµ РѕС‡РєРѕРІ, РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё drawWin() РµСЃР»Рё points == 5,РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё playNextLevel(15);
 void changePoints(int textColor, int backgroundColor, int gameAttempts, int points, int timer) {
     int x = 30;
     int y = 1;
@@ -206,26 +206,26 @@ void changePoints(int textColor, int backgroundColor, int gameAttempts, int poin
     wstring sidebarTextPoints = L"Your points = ";
     wstring sidebarTextAttempts = L"Your attempts = ";
 
-    int textStartX = x + 2; // Отступ текста от левого края
-    int textStartY = y + 5; // Отступ текста от верхнего края
+    int textStartX = x + 2; // РћС‚СЃС‚СѓРї С‚РµРєСЃС‚Р° РѕС‚ Р»РµРІРѕРіРѕ РєСЂР°СЏ
+    int textStartY = y + 5; // РћС‚СЃС‚СѓРї С‚РµРєСЃС‚Р° РѕС‚ РІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ
 
-    int textStartX2 = x + 1; // Отступ текста от левого края
-    int textStartY2 = y + 8; // Отступ текста от верхнего края
+    int textStartX2 = x + 1; // РћС‚СЃС‚СѓРї С‚РµРєСЃС‚Р° РѕС‚ Р»РµРІРѕРіРѕ РєСЂР°СЏ
+    int textStartY2 = y + 8; // РћС‚СЃС‚СѓРї С‚РµРєСЃС‚Р° РѕС‚ РІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ
 
-    // Вывод текста за пределами цикла
+    // Р’С‹РІРѕРґ С‚РµРєСЃС‚Р° Р·Р° РїСЂРµРґРµР»Р°РјРё С†РёРєР»Р°
     COORD textPos = { (short)textStartX, (short)textStartY };
-    SetConsoleCursorPosition(output, textPos); // Устанавливаем позицию для текста
-    setColor(textColor, backgroundColor); // Цвет для текста
+    SetConsoleCursorPosition(output, textPos); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РґР»СЏ С‚РµРєСЃС‚Р°
+    setColor(textColor, backgroundColor); // Р¦РІРµС‚ РґР»СЏ С‚РµРєСЃС‚Р°
     wcout << sidebarTextPoints << points << endl;
 
     COORD textPos2 = { (short)textStartX2, (short)textStartY2 };
-    SetConsoleCursorPosition(output, textPos2); // Устанавливаем позицию для текста
+    SetConsoleCursorPosition(output, textPos2); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РґР»СЏ С‚РµРєСЃС‚Р°
     wcout << sidebarTextAttempts << gameAttempts << endl;
 
-    setColor(7, 0); // Сброс цвета
+    setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
 }
 
-// Следующий уровень
+// РЎР»РµРґСѓСЋС‰РёР№ СѓСЂРѕРІРµРЅСЊ
 void playNextLevel(int timer) {
     consoleSetting();
     isGame = true;
@@ -237,8 +237,8 @@ void playNextLevel(int timer) {
     drawSideBar(30, 1, 30, 20, 0, 14);
     changePoints(0, 14, 0, 0, 60);
 
-    int startX = 62; // Начальная координата X для карточек
-    int startY = 5;  // Начальная координата Y для карточек
+    int startX = 62; // РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° X РґР»СЏ РєР°СЂС‚РѕС‡РµРє
+    int startY = 5;  // РќР°С‡Р°Р»СЊРЅР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° Y РґР»СЏ РєР°СЂС‚РѕС‡РµРє
 
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLUMNS; c++) {
@@ -251,17 +251,17 @@ void playNextLevel(int timer) {
     int points = 0;
     int attempts = 0;
 
-    // Таймер
+    // РўР°Р№РјРµСЂ
     int timerDuration = timer;
     auto startTime = chrono::steady_clock::now();
 
     while (true) {
-        // Вычисляем оставшееся время
+        // Р’С‹С‡РёСЃР»СЏРµРј РѕСЃС‚Р°РІС€РµРµСЃСЏ РІСЂРµРјСЏ
         auto currentTime = chrono::steady_clock::now();
         int elapsedTime = chrono::duration_cast<chrono::seconds>(currentTime - startTime).count();
         int remainingTime = timerDuration - elapsedTime;
 
-        // Обновляем таймер на экране
+        // РћР±РЅРѕРІР»СЏРµРј С‚Р°Р№РјРµСЂ РЅР° СЌРєСЂР°РЅРµ
         if (isGame) {
             drawTimer(13, 14, remainingTime);
         }
@@ -271,31 +271,31 @@ void playNextLevel(int timer) {
             isGame = false;
         }
 
-        // Проверяем, является ли введенный символ цифрой от 1 до 10
-        if (_kbhit()) { // Проверяем, нажата ли клавиша
+        // РџСЂРѕРІРµСЂСЏРµРј, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РІРІРµРґРµРЅРЅС‹Р№ СЃРёРјРІРѕР» С†РёС„СЂРѕР№ РѕС‚ 1 РґРѕ 10
+        if (_kbhit()) { // РџСЂРѕРІРµСЂСЏРµРј, РЅР°Р¶Р°С‚Р° Р»Рё РєР»Р°РІРёС€Р°
             int userChoice = _getch();
 
             if (userChoice >= 48 && userChoice <= 58) {
                 int index;
 
-                // Обрабатываем кнопку '0' как карточку 10
+                // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РєРЅРѕРїРєСѓ '0' РєР°Рє РєР°СЂС‚РѕС‡РєСѓ 10
                 if (userChoice == 48) {
-                    index = (ROWS * COLUMNS) - 1; // Индекс последней карточки  
+                    index = (ROWS * COLUMNS) - 1; // РРЅРґРµРєСЃ РїРѕСЃР»РµРґРЅРµР№ РєР°СЂС‚РѕС‡РєРё  
                 }
                 else {
-                    index = (char)userChoice - '1'; // Преобразуем символ в индекс
+                    index = (char)userChoice - '1'; // РџСЂРµРѕР±СЂР°Р·СѓРµРј СЃРёРјРІРѕР» РІ РёРЅРґРµРєСЃ
                 }
 
-                // Определяем строку и столбец на основе индекса
+                // РћРїСЂРµРґРµР»СЏРµРј СЃС‚СЂРѕРєСѓ Рё СЃС‚РѕР»Р±РµС† РЅР° РѕСЃРЅРѕРІРµ РёРЅРґРµРєСЃР°
                 int r = index / COLUMNS;
                 int c = index % COLUMNS;
 
-                // Переключаем состояние карточки
+                // РџРµСЂРµРєР»СЋС‡Р°РµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РєР°СЂС‚РѕС‡РєРё
                 if (choiseCount < 2) {
                     cards2[r][c].isActive = !cards2[r][c].isActive;
 
                     if (cards[r][c].isActive) {
-                        arrChooseCards[choiseCount][0] = r; // Сохраняем индекс первой карточки
+                        arrChooseCards[choiseCount][0] = r; // РЎРѕС…СЂР°РЅСЏРµРј РёРЅРґРµРєСЃ РїРµСЂРІРѕР№ РєР°СЂС‚РѕС‡РєРё
                         arrChooseCards[choiseCount][1] = c;
                         choiseCount++;
                     }
@@ -303,18 +303,18 @@ void playNextLevel(int timer) {
                         choiseCount--;
                     }
 
-                    // Перерисовываем карточки
+                    // РџРµСЂРµСЂРёСЃРѕРІС‹РІР°РµРј РєР°СЂС‚РѕС‡РєРё
                     for (int r = 0; r < ROWS; r++) {
                         for (int c = 0; c < COLUMNS; c++) {
                             drawCard(startX + c * (WIDTH_CARD + 2), startY + r * (HEIGHT_CARD + 1), HEIGHT_CARD, WIDTH_CARD, 15, cards2[r][c].text, cards2[r][c].isActive, cards2[r][c].isChoosed);
                         }
                     }
 
-                    // Проверяем, достигли ли мы двух выборов
+                    // РџСЂРѕРІРµСЂСЏРµРј, РґРѕСЃС‚РёРіР»Рё Р»Рё РјС‹ РґРІСѓС… РІС‹Р±РѕСЂРѕРІ
                     if (choiseCount == 2) {
                         attempts++;
 
-                        // Сравниваем карточки
+                        // РЎСЂР°РІРЅРёРІР°РµРј РєР°СЂС‚РѕС‡РєРё
                         if (compareCards(arrChooseCards[0], arrChooseCards[1])) {
                             cards2[arrChooseCards[0][0]][arrChooseCards[0][1]].isChoosed = true;
                             cards2[arrChooseCards[1][0]][arrChooseCards[1][1]].isChoosed = true;
@@ -322,20 +322,20 @@ void playNextLevel(int timer) {
                             points++;
                         }
                         else {
-                            // Закрываем карточки
+                            // Р—Р°РєСЂС‹РІР°РµРј РєР°СЂС‚РѕС‡РєРё
                             cards2[arrChooseCards[0][0]][arrChooseCards[0][1]].isActive = false;
                             cards2[arrChooseCards[1][0]][arrChooseCards[1][1]].isActive = false;
 
                         }
-                        // Сбрасываем счётчик
+                        // РЎР±СЂР°СЃС‹РІР°РµРј СЃС‡С‘С‚С‡РёРє
                         choiseCount = 0;
                         changePoints(0, 14, attempts, points, remainingTime);
                     }
                 }
             }
 
-            // Нажатие клавиши Esc - выход из программы
-            if (userChoice == 27) { // 27 - код клавиши Esc
+            // РќР°Р¶Р°С‚РёРµ РєР»Р°РІРёС€Рё Esc - РІС‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹
+            if (userChoice == 27) { // 27 - РєРѕРґ РєР»Р°РІРёС€Рё Esc
                 break;
             }
         }
@@ -345,7 +345,7 @@ void playNextLevel(int timer) {
     SetConsoleCursorPosition(output, pos);
 }
 
-// Вывод рамки
+// Р’С‹РІРѕРґ СЂР°РјРєРё
 void drawRectangle(int x, int y, int height, int width, int textColor, int backgroundColor, wchar_t* symb_activity) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     setColor(textColor, backgroundColor);
@@ -357,19 +357,19 @@ void drawRectangle(int x, int y, int height, int width, int textColor, int backg
             setColor(textColor, backgroundColor);
 
             if (i == y && j == x) {
-                wcout << L"\u2554"; // ВЕРХ ЛЕВО
+                wcout << L"\u2554"; // Р’Р•Р РҐ Р›Р•Р’Рћ
             }
             else if (i == y && j == width + x - 1) {
-                wcout << L"\u2557"; // ВЕРХ ПРАВО
+                wcout << L"\u2557"; // Р’Р•Р РҐ РџР РђР’Рћ
             }
             else if (i == height + y - 1 && j == x) {
-                wcout << L"\u255A"; // НИЗ ЛЕВО
+                wcout << L"\u255A"; // РќРР— Р›Р•Р’Рћ
             }
             else if (i == height + y - 1 && j == width + x - 1) {
-                wcout << L"\u255D"; // НИЗ ПРАВО
+                wcout << L"\u255D"; // РќРР— РџР РђР’Рћ
             }
             else if ((i < height + y - 1 && j == x) || (i < height + y - 1 && j == width + x - 1)) {
-                wcout << L"\u2551"; // ПАЛКА ВЕРТИКАЛЬНАЯ
+                wcout << L"\u2551"; // РџРђР›РљРђ Р’Р•Р РўРРљРђР›Р¬РќРђРЇ
             }
             else if ((i == height + y - 1 && j < width + x - 1) || (i == y && j < width + x - 1)) {
                 wcout << symb_activity;
@@ -382,7 +382,7 @@ void drawRectangle(int x, int y, int height, int width, int textColor, int backg
     }
 }
 
-// Вывод основного поля
+// Р’С‹РІРѕРґ РѕСЃРЅРѕРІРЅРѕРіРѕ РїРѕР»СЏ
 void drawMainField(int x, int y, int height, int width, int textColor, int backgroundColor) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     for (int i = y; i < height + y; i++) {
@@ -392,22 +392,22 @@ void drawMainField(int x, int y, int height, int width, int textColor, int backg
             setColor(textColor, backgroundColor);
 
             if (i == y && j == x) {
-                wcout << L"\u2554"; // ВЕРХ ЛЕВО
+                wcout << L"\u2554"; // Р’Р•Р РҐ Р›Р•Р’Рћ
             }
             else if (i == y && j == width + x - 1) {
-                wcout << L"\u2557"; // ВЕРХ ПРАВО
+                wcout << L"\u2557"; // Р’Р•Р РҐ РџР РђР’Рћ
             }
             else if (i == height + y - 1 && j == x) {
-                wcout << L"\u255A"; // НИЗ ЛЕВО
+                wcout << L"\u255A"; // РќРР— Р›Р•Р’Рћ
             }
             else if (i == height + y - 1 && j == width + x - 1) {
-                wcout << L"\u255D"; // НИЗ ПРАВО
+                wcout << L"\u255D"; // РќРР— РџР РђР’Рћ
             }
             else if ((i < height + y - 1 && j == x) || (i < height + y - 1 && j == width + x - 1)) {
-                wcout << L"\u2551"; // ПАЛКА ВЕРТИКАЛЬНАЯ
+                wcout << L"\u2551"; // РџРђР›РљРђ Р’Р•Р РўРРљРђР›Р¬РќРђРЇ
             }
             else if ((i == height + y - 1 && j < width + x - 1) || (i == y && j < width + x - 1)) {
-                wcout << L"\u2500"; // ПАЛКА ГОРИЗОНТАЛЬНАЯ
+                wcout << L"\u2500"; // РџРђР›РљРђ Р“РћР РР—РћРќРўРђР›Р¬РќРђРЇ
             }
             else {
                 cout << " ";
@@ -417,40 +417,40 @@ void drawMainField(int x, int y, int height, int width, int textColor, int backg
     }
 }
 
-// Вывод боковой панели
+// Р’С‹РІРѕРґ Р±РѕРєРѕРІРѕР№ РїР°РЅРµР»Рё
 void drawSideBar(int x, int y, int height, int width, int textColor, int backgroundColor) {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 
     for (int i = y; i < height + y; i++) {
         for (int j = x; j < width + x; j++) {
             COORD pos = { j, i };
-            SetConsoleCursorPosition(output, pos); // Устанавливаем позицию курсора
-            setColor(textColor, backgroundColor); // Устанавливаем цвет
+            SetConsoleCursorPosition(output, pos); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РєСѓСЂСЃРѕСЂР°
+            setColor(textColor, backgroundColor); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚
 
             if (i == y && j == x) {
-                wcout << L"\u2554"; // ВЕРХ ЛЕВО
+                wcout << L"\u2554"; // Р’Р•Р РҐ Р›Р•Р’Рћ
             }
             else if (i == height + y - 1 && j == x) {
-                wcout << L"\u255A"; // НИЗ ЛЕВО
+                wcout << L"\u255A"; // РќРР— Р›Р•Р’Рћ
             }
             else if (i < height + y && j == width + x - 1) {
-                wcout << L"\u2593"; // ПАЛКА ВЕРТИКАЛЬНАЯ
+                wcout << L"\u2593"; // РџРђР›РљРђ Р’Р•Р РўРРљРђР›Р¬РќРђРЇ
             }
             else if (i < height + y - 1 && j == x) {
-                wcout << L"\u2551"; // ПАЛКА ВЕРТИКАЛЬНАЯ
+                wcout << L"\u2551"; // РџРђР›РљРђ Р’Р•Р РўРРљРђР›Р¬РќРђРЇ
             }
             else if ((i == height + y - 1 && j < width + x - 1) || (i == y && j < width + x - 1)) {
-                wcout << L"\u2500"; // ПАЛКА ГОРИЗОНТАЛЬНАЯ
+                wcout << L"\u2500"; // РџРђР›РљРђ Р“РћР РР—РћРќРўРђР›Р¬РќРђРЇ
             }
             else {
                 cout << " ";
             }
-            setColor(7, 0); // Сброс цвета
+            setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
         }
     }
 }
 
-// Выводим данные что юзер победил
+// Р’С‹РІРѕРґРёРј РґР°РЅРЅС‹Рµ С‡С‚Рѕ СЋР·РµСЂ РїРѕР±РµРґРёР»
 void drawWin() {
     int x = 80;
     int y = 20;
@@ -463,16 +463,16 @@ void drawWin() {
     int textStartY = y;
     Sleep(1500);
 
-    // Вывод текста за пределами цикла
+    // Р’С‹РІРѕРґ С‚РµРєСЃС‚Р° Р·Р° РїСЂРµРґРµР»Р°РјРё С†РёРєР»Р°
     COORD textPos = { (short)textStartX, (short)textStartY };
-    SetConsoleCursorPosition(output, textPos); // Устанавливаем позицию для текста
-    setColor(0, backgroundColor); // Цвет для текста
+    SetConsoleCursorPosition(output, textPos); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РґР»СЏ С‚РµРєСЃС‚Р°
+    setColor(0, backgroundColor); // Р¦РІРµС‚ РґР»СЏ С‚РµРєСЃС‚Р°
     wcout << text << endl;
 
-    setColor(7, 0); // Сброс цвета
+    setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
 }
 
-// Выводим данные что юзер проиграл
+// Р’С‹РІРѕРґРёРј РґР°РЅРЅС‹Рµ С‡С‚Рѕ СЋР·РµСЂ РїСЂРѕРёРіСЂР°Р»
 void drawLose() {
     int x = 80;
     int y = 20;
@@ -485,16 +485,16 @@ void drawLose() {
     int textStartY = y;
     Sleep(1500);
 
-    // Вывод текста за пределами цикла
+    // Р’С‹РІРѕРґ С‚РµРєСЃС‚Р° Р·Р° РїСЂРµРґРµР»Р°РјРё С†РёРєР»Р°
     COORD textPos = { (short)textStartX, (short)textStartY };
-    SetConsoleCursorPosition(output, textPos); // Устанавливаем позицию для текста
-    setColor(0, backgroundColor); // Цвет для текста
+    SetConsoleCursorPosition(output, textPos); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РґР»СЏ С‚РµРєСЃС‚Р°
+    setColor(0, backgroundColor); // Р¦РІРµС‚ РґР»СЏ С‚РµРєСЃС‚Р°
     wcout << text << endl;
 
-    setColor(7, 0); // Сброс цвета
+    setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
 }
 
-// Выводим таймер
+// Р’С‹РІРѕРґРёРј С‚Р°Р№РјРµСЂ
 void drawTimer(int textColor, int backgroundColor, int counter) {
     int x = 32;
     int y = 13;
@@ -505,23 +505,23 @@ void drawTimer(int textColor, int backgroundColor, int counter) {
     int textStartX = x;
     int textStartY = y;
 
-    // Вывод текста за пределами цикла
+    // Р’С‹РІРѕРґ С‚РµРєСЃС‚Р° Р·Р° РїСЂРµРґРµР»Р°РјРё С†РёРєР»Р°
     COORD textPos = { (short)textStartX, (short)textStartY };
-    SetConsoleCursorPosition(output, textPos); // Устанавливаем позицию для текста
+    SetConsoleCursorPosition(output, textPos); // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕР·РёС†РёСЋ РґР»СЏ С‚РµРєСЃС‚Р°
     setColor(textColor, backgroundColor);
     wcout << timerText << counter << " s" << endl;
 
-    setColor(7, 0); // Сброс цвета
+    setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
 }
 
-// Функция для получения ширины консоли
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С€РёСЂРёРЅС‹ РєРѕРЅСЃРѕР»Рё
 int getConsoleWidth() {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    return csbi.srWindow.Right - csbi.srWindow.Left + 1; // ширина окна
+    return csbi.srWindow.Right - csbi.srWindow.Left + 1; // С€РёСЂРёРЅР° РѕРєРЅР°
 }
 
-// Убираем видимость курсора
+// РЈР±РёСЂР°РµРј РІРёРґРёРјРѕСЃС‚СЊ РєСѓСЂСЃРѕСЂР°
 void hideCursor() {
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
@@ -531,13 +531,13 @@ void hideCursor() {
     SetConsoleCursorInfo(output, &cursorInfo);
 }
 
-// Настройки консоли
+// РќР°СЃС‚СЂРѕР№РєРё РєРѕРЅСЃРѕР»Рё
 void consoleSetting() {
     locale::global(locale("en_US.UTF-8"));
     SetConsoleOutputCP(CP_UTF8);
     hideCursor();
 
-    // Устанавливаем локаль для поддержки UTF-8
+    // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р»РѕРєР°Р»СЊ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё UTF-8
     setlocale(LC_ALL, "en_US.UTF-8");
 
     HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -546,33 +546,33 @@ void consoleSetting() {
     info.dwSize = 100;
     SetConsoleCursorInfo(output, &info);
 }
-// Функция для настройки цвета
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°СЃС‚СЂРѕР№РєРё С†РІРµС‚Р°
 void setColor(int textColor, int backgroundColor) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int colorAttribute = textColor + backgroundColor * 16;
     SetConsoleTextAttribute(hConsole, colorAttribute);
 }
 
-// Меню
+// РњРµРЅСЋ
 void menu() {
-    int index = 0; // Индекс выбранного элемента меню
+    int index = 0; // РРЅРґРµРєСЃ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјРµРЅСЋ
 
     while (true) {
-        displayMenu(index); // Показать меню
+        displayMenu(index); // РџРѕРєР°Р·Р°С‚СЊ РјРµРЅСЋ
 
-        // Получение нажатой клавиши
+        // РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р¶Р°С‚РѕР№ РєР»Р°РІРёС€Рё
         int c = _getch();
-        if (c == 72) { // Вверх
+        if (c == 72) { // Р’РІРµСЂС…
             index--;
         }
-        if (c == 80) { // Вниз
+        if (c == 80) { // Р’РЅРёР·
             index++;
         }
         if (index < 0) {
-            index = 4; // Переход в конец массива
+            index = 4; // РџРµСЂРµС…РѕРґ РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР°
         }
         if (index > 4) {
-            index = 0; // Переход в начало массива
+            index = 0; // РџРµСЂРµС…РѕРґ РІ РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°
         }
 
         if (c == 13) { // Enter
@@ -581,41 +581,41 @@ void menu() {
                 startGame(25);
                 return;
             case 1:
-                // Логика продолжения игры
+                // Р›РѕРіРёРєР° РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ РёРіСЂС‹
                 return;
             case 2:
-                // Логика отображения счета
+                // Р›РѕРіРёРєР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‡РµС‚Р°
                 return;
             case 3:
-                // Логика меню опций
+                // Р›РѕРіРёРєР° РјРµРЅСЋ РѕРїС†РёР№
                 return;
             case 4:
-                exit(0); // Выход из программы
+                exit(0); // Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹
             }
         }
     }
 }
 
-// Функция для отображения главного меню
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ
 void displayMenu(int index) {
     const char* options[] = { "Start Game", "Continue", "Score", "Options", "Exit" };
     const int menuSize = sizeof(options) / sizeof(options[0]);
 
-    system("cls"); // Очистка консоли
+    system("cls"); // РћС‡РёСЃС‚РєР° РєРѕРЅСЃРѕР»Рё
 
-    // Заголовок
+    // Р—Р°РіРѕР»РѕРІРѕРє
     setColor(14, 0);
     cout << "\n\n\n";
     cout << string((getConsoleWidth() - 24) / 2, ' ') << "=========================\n";
     cout << string((getConsoleWidth() - 19) / 2, ' ') << "    Memory Card Game\n";
     cout << string((getConsoleWidth() - 24) / 2, ' ') << "=========================\n\n";
 
-    // Отображение пунктов меню
+    // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ
     for (int i = 0; i < menuSize; i++) {
         setColor(index == i ? 5 : 7, 0);
-        cout << string((getConsoleWidth() - strlen(options[i])) / 2, ' ') << options[i] << endl; // Центрирование
+        cout << string((getConsoleWidth() - strlen(options[i])) / 2, ' ') << options[i] << endl; // Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРёРµ
     }
 
-    setColor(7, 0); // Сброс цвета
+    setColor(7, 0); // РЎР±СЂРѕСЃ С†РІРµС‚Р°
 }
 

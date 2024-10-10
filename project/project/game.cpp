@@ -1,23 +1,23 @@
 #include "header.h"
 
 Card cards[ROWS][COLUMNS]{
-{ {L"Cat", L"Кошка", false, false, 0, 0}, {L"Кошка", L"Cat", false, false, 1, 0}, {L"Dog", L"Собака", false, false, 2, 0}, {L"Собака", L"Dog", false, false, 3, 0}, {L"Лев", L"Lion", false, false, 4, 0} },
-{ {L"Pig", L"Свинка", false, false, 0, 1}, {L"Свинка", L"Pig", false, false, 1, 1}, {L"Zebra", L"Зебра", false, false, 2, 1}, {L"Lion", L"Лев", false, false, 3, 1}, {L"Зебра", L"Zebra", false, false, 4, 1} },
+{ {L"Cat", L"РљРѕС€РєР°", false, false, 0, 0}, {L"РљРѕС€РєР°", L"Cat", false, false, 1, 0}, {L"Dog", L"РЎРѕР±Р°РєР°", false, false, 2, 0}, {L"РЎРѕР±Р°РєР°", L"Dog", false, false, 3, 0}, {L"Р›РµРІ", L"Lion", false, false, 4, 0} },
+{ {L"Pig", L"РЎРІРёРЅРєР°", false, false, 0, 1}, {L"РЎРІРёРЅРєР°", L"Pig", false, false, 1, 1}, {L"Zebra", L"Р—РµР±СЂР°", false, false, 2, 1}, {L"Lion", L"Р›РµРІ", false, false, 3, 1}, {L"Р—РµР±СЂР°", L"Zebra", false, false, 4, 1} },
 };
 
 Card cards2[ROWS][COLUMNS]{
-{ {L"Mouse ", L"Мышка", false, false, 0, 0}, {L"Мышка", L"Mouse", false, false, 1, 0}, {L"Giraffe", L"Жираф", false, false, 2, 0}, {L"Жираф", L"Giraffe", false, false, 3, 0}, {L"Корова", L"Cow", false, false, 4, 0} },
-{ {L"Bird", L"Птичка", false, false, 0, 1}, {L"Птичка", L"Bird", false, false, 1, 1}, {L"Donkey", L"Ослик", false, false, 2, 1}, {L"Cow", L"Корова", false, false, 3, 1}, {L"Ослик", L"Donkey", false, false, 4, 1} },
+{ {L"Mouse ", L"РњС‹С€РєР°", false, false, 0, 0}, {L"РњС‹С€РєР°", L"Mouse", false, false, 1, 0}, {L"Giraffe", L"Р–РёСЂР°С„", false, false, 2, 0}, {L"Р–РёСЂР°С„", L"Giraffe", false, false, 3, 0}, {L"РљРѕСЂРѕРІР°", L"Cow", false, false, 4, 0} },
+{ {L"Bird", L"РџС‚РёС‡РєР°", false, false, 0, 1}, {L"РџС‚РёС‡РєР°", L"Bird", false, false, 1, 1}, {L"Donkey", L"РћСЃР»РёРє", false, false, 2, 1}, {L"Cow", L"РљРѕСЂРѕРІР°", false, false, 3, 1}, {L"РћСЃР»РёРє", L"Donkey", false, false, 4, 1} },
 };
 
-// Обьявление глобальной переменной которая указывает продолжается ли игра и запускать ли второй уровень
+// РћР±СЊСЏРІР»РµРЅРёРµ РіР»РѕР±Р°Р»СЊРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ РєРѕС‚РѕСЂР°СЏ СѓРєР°Р·С‹РІР°РµС‚ РїСЂРѕРґРѕР»Р¶Р°РµС‚СЃСЏ Р»Рё РёРіСЂР° Рё Р·Р°РїСѓСЃРєР°С‚СЊ Р»Рё РІС‚РѕСЂРѕР№ СѓСЂРѕРІРµРЅСЊ
 bool isGame = true;
 bool isNextLevel = false;;
 
 
 int main()
 {
-    // Подключение музыки
+    // РџРѕРґРєР»СЋС‡РµРЅРёРµ РјСѓР·С‹РєРё
     PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
     menu();

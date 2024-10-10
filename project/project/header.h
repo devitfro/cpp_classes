@@ -47,7 +47,7 @@ struct Card {
     int y;
 };
 
-// Массив карточек
+// РњР°СЃСЃРёРІ РєР°СЂС‚РѕС‡РµРє
 extern Card cards[ROWS][COLUMNS];
 extern Card cards2[ROWS][COLUMNS];
 
