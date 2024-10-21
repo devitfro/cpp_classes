@@ -1,6 +1,6 @@
 #include "header.h"
 
-Cat get_cat_info() {
+Cat getCatInfo() {
     Cat cat;
     cat.name = "Lelik";
     cat.age = 2;
@@ -11,7 +11,7 @@ Cat get_cat_info() {
     return cat;
 }
 
-Dyson get_dyson_info() {
+Dyson getDysonInfo() {
     Dyson user_dyson;
     user_dyson.model = "Airstrait";
     user_dyson.price = 500;
@@ -22,7 +22,7 @@ Dyson get_dyson_info() {
     return user_dyson;
 }
 
-Serial get_serial_info() {
+Serial getSerialInfo() {
     Serial serial;
     serial.name = "How I meet your mother";
     serial.country = "USA";
@@ -33,7 +33,7 @@ Serial get_serial_info() {
     return serial;
 }
 
-Phone get_phone_info() {
+Phone getPhoneInfo() {
     Phone phone;
     phone.model = "iPhone 15 pro";
     phone.color = "White";
@@ -44,7 +44,7 @@ Phone get_phone_info() {
     return phone;
 }
 
-Laptop get_laptop_info() {
+Laptop getLaptopInfo() {
     Laptop laptop;
     laptop.model = "Macbook air 2023";
     laptop.color = "Gray";

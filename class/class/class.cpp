@@ -2,26 +2,26 @@
 
 int main()
 {
-    Cat cat = get_cat_info();
+    Cat cat = getCatInfo();
     cat.drinkWater();
     cat.displayInfo();
     cout << endl;
 
-    Dyson dyson = get_dyson_info();
+    Dyson dyson = getDysonInfo();
     dyson.updatePrice(300);
     dyson.printPrice();
     dyson.displayInfo();
     cout << endl;
    
-    Serial serial = get_serial_info();
+    Serial serial = getSerialInfo();
     serial.displayInfo();
     cout << endl;
 
-    Phone phone = get_phone_info();
+    Phone phone = getPhoneInfo();
     phone.displayInfo();
     cout << endl;
 
-    Laptop laptop = get_laptop_info();
+    Laptop laptop = getLaptopInfo();
     laptop.displayInfo();
     cout << endl;
 

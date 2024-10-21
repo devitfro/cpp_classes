@@ -59,7 +59,7 @@ public:
         cout << "Price = " << price << endl;
     }
 
-    void Sold() {
+    void sold() {
         cout << "Dyson is sold!\n";
     }
 
@@ -121,7 +121,7 @@ public:
     int yearRelease;
     bool isWork;
 
-    void Call() {
+    void call() {
         cout << "Calling ..." << endl;
     }
 
@@ -155,7 +155,7 @@ public:
     int yearRelease;
     bool isWork;
 
-    void Work() {
+    void work() {
         cout << "Working ..." << endl;
     }
 
@@ -167,7 +167,7 @@ public:
         cout << "Checking message on laptop!" << endl;
     }
 
-    void Programming() {
+    void programming() {
         cout << "Programming on c++!" << endl;
     }
 
@@ -181,11 +181,11 @@ public:
     }
 };
 
-Cat get_cat_info();
-Dyson get_dyson_info();
-Serial get_serial_info();
-Phone get_phone_info();
-Laptop get_laptop_info();
+Cat getCatInfo();
+Dyson getDysonInfo();
+Serial getSerialInfo();
+Phone getPhoneInfo();
+Laptop getLaptopInfo();
 
 #endif
 
