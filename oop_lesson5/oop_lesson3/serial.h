@@ -1,0 +1,40 @@
+#pragma once
+
+#include <iostream>
+using namespace std;
+
+class Serial {
+    string name;
+    string country;
+    int seasons;
+    double rating;
+    bool isWatched;
+
+public:
+    // c-tor
+    Serial();
+    Serial(string name, int seasons);
+    Serial(string name, string country, int seasons, double rating, bool isWatched);
+
+    // Set
+    void setName(string);
+    void setCountry(string);
+    void setSeasons(unsigned int);
+    void setRating(double);
+    void setIsWatched(bool);
+
+    // Get
+    string getName() const;
+    string getCountry() const;
+    unsigned int getSeasons() const;
+    double getRating() const;
+    bool getIsWatched() const;
+
+    // Methods
+    void watchSerial();
+    void pauseSerial();
+    void printRecommend();
+    void updateRating(double);
+    void displayInfo() const;
+};
+
