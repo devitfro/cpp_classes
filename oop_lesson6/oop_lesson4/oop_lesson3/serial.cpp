@@ -1,39 +1,8 @@
 #include "serial.h"
 
-// c-tor
-Serial::Serial() {
-    setName("Unknown");
-    setCountry("Unknown");
-    setSeasons(0);
-    setRating(0);
-    setIsWatched(false);
-}
-
-Serial::Serial(const char* name, string country, int seasons, double rating, bool isWatched) {
-    setName(name);
-    setCountry(country);
-    setSeasons(seasons);
-    setRating(rating);
-    setIsWatched(isWatched);
-}
-
-// c-tor preobr
-Serial::Serial(const string& name) {
-    setName(name.c_str());
-    setCountry("Unknown");
-    setSeasons(0);
-    setRating(0);
-    setIsWatched(false);
-}
-
 // Set
-void Serial::setName(const char* name) {
-    if (this->name != nullptr) {
-        delete this->name;
-    }
-    int length = strlen(name) + 1;
-    this->name = new char[length];
-    strcpy_s(this->name, length, name);
+void Serial::setName(string name) {
+    this->name = name;
 }
 
 void Serial::setCountry(string country) {
@@ -55,15 +24,15 @@ void Serial::setIsWatched(bool isWatched) {
 }
 
 // Get
-string Serial::getName() const { return string(name); }
+string Serial::getName() { return name; }
 
-string Serial::getCountry() const { return country; }
+string Serial::getCountry() { return country; }
 
-unsigned int Serial::getSeasons() const { return seasons; }
+unsigned int Serial::getSeasons() { return seasons; }
 
-double Serial::getRating() const { return rating; }
+double Serial::getRating() { return rating; }
 
-bool Serial::getIsWatched() const { return isWatched; }
+bool Serial::getIsWatched() { return isWatched; }
 
 // Methods
 void Serial::watchSerial() {
@@ -88,12 +57,12 @@ void Serial::updateRating(double newRating) {
     cout << "The rating of " << name << " has been updated to: " << rating << endl;
 }
 
-void Serial::displayInfo() const {
+void Serial::displayInfo() {
     cout << "Serial Information:" << endl;
     cout << "Name: " << name << endl;
     cout << "Country: " << country << endl;
     cout << "Seasons: " << seasons << endl;
     cout << "Rating: " << rating << endl;
-    cout << "Is Watched: " << (isWatched ? "Yes" : "No") << "\n\n";
+    cout << "Is Watched: " << (isWatched ? "Yes" : "No") << endl;
 }
 
